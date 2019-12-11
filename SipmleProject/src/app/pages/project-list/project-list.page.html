@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>My Events</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <!-- <ion-fab vertical="bottom" horizontial="end" slot="fixed">
+    <ion-fab-button routerLink="/project">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+
+  <ion-card  *ngFor="let project of (projects | async)" routerLink="project-details/{{project.id}}" color="light-tint">
+    <ion-card-header color="tertiary">
+        <ion-card-subtitle >
+            <ion-icon name="calendar" style="font-size: 1.5em;"></ion-icon>
+            {{project.date | date: "MMMM dd "}}
+        </ion-card-subtitle>
+      </ion-card-header>
+          
+      <ion-card-content style="background-color:rgb(46, 46, 46);" class="ion-padding" > 
+         <div style="padding-left: 10px;">
+            <h1>{{project.name}}</h1>
+            
+            {{project.description}}
+            <br>
+        </div>
+        <div style="padding:10px;">
+          <ion-icon name="alarm"></ion-icon>
+          {{project.time | date: "hh:mm a"}}
+          <br>
+          <ion-icon name="pin"></ion-icon>
+          {{project.location}}
+        </div>
+      </ion-card-content>  
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" >
+      <ion-fab-button color="tertiary" routerLink="/project">
+        <ion-icon name="add" ></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>
+
+  
+ 
